@@ -1,7 +1,4 @@
-﻿
-using dotnet_rpg.Models;
-
-namespace dotnet_rpg.Services.CharacterService
+﻿namespace dotnet_rpg.Services.CharacterService
 {
     public class CharacterService : ICharacterService
     {
