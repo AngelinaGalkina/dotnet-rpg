@@ -55,10 +55,10 @@
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters()
+        public async Task<ServiceResponse<List<GetCharacterDto>>> GetAllCharacters(int userId)
         {
             var serviceResponse = new ServiceResponse<List<GetCharacterDto>>();
-            var dbCharacter = await Context.Characters.ToListAsync();
+            var dbCharacter = await Context.Characters.Where(c => c.User!.Id == userId).ToListAsync();
 
             serviceResponse.Data = dbCharacter.Select(c => Mapper.Map<GetCharacterDto>(c)).ToList();
 
