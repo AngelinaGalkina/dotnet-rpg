@@ -5,12 +5,17 @@
         private readonly IMapper Mapper;
 
         public readonly DataContext Context;
+        
+        private readonly IHttpContextAccessor HttpContextAccessor;
 
-        public CharacterService(IMapper mapper, DataContext context)
+        public CharacterService(IMapper mapper, DataContext context, IHttpContextAccessor httpContextAccessor)
         {
             Mapper = mapper;
             Context = context;
+            HttpContextAccessor = httpContextAccessor;
         }
+
+        //private int GetUserId() => int.TryParse();
 
         public async Task<ServiceResponse<List<GetCharacterDto>>> AddCharacter(AddCharacterDto newCharacter)
         {
